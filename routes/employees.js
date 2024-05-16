@@ -24,7 +24,7 @@ router.get('/employees',cors(),(req, res)=>{
 })
 
 // Recuperar user por id
-router.get('/employeesSchema/:id',cors(),(req, res)=>{
+router.get('/employees/:id',cors(),(req, res)=>{
     const { id } = req.params;
     employeesSchema
          .findById(id)
@@ -32,7 +32,7 @@ router.get('/employeesSchema/:id',cors(),(req, res)=>{
          .catch((error) =>res.json({message: error}))
  })
 //Buscar por email
-router.get('/employeesSchema/byemail/:email',cors(),async(req, res)=>{
+router.get('/employees/byemail/:email',cors(),async(req, res)=>{
     const { email } = req.params;
     await employeesSchema
           .findOne({email:email})
@@ -41,7 +41,7 @@ router.get('/employeesSchema/byemail/:email',cors(),async(req, res)=>{
     });
 
  // Actualizar user por id
-router.put('/employeesSchema/:id',cors(),(req, res)=>{
+router.put('/employees/:id',cors(),(req, res)=>{
     const { id } = req.params;
     const {username,fullname, email,password, role} = req.body;
     employeesSchema
@@ -51,7 +51,7 @@ router.put('/employeesSchema/:id',cors(),(req, res)=>{
  })
 
   // Eliminar user por id
-router.delete('/employeesSchema/:id',cors(),(req, res)=>{
+router.delete('/employees/:id',cors(),(req, res)=>{
     const { id } = req.params;
     employeesSchema
          .deleteOne({_id:id})
